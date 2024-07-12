@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsup src/index.ts --watch --onSuccess 'node dist/index.js'",
+    "dev": "NODE_ENV=development tsup src/index.ts --watch --onSuccess 'node dist/index.js'",
     "build": "tsup",
     "test": "jest"
   },

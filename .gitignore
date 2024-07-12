@@ -4,3 +4,5 @@ node_modules
 # build files
 dist
 
+# local source files (for testing purposes)
+/src/__local__/*
