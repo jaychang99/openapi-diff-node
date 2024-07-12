@@ -34,7 +34,7 @@ export function flattenOpenapi(spec: SpecType): PathFlattenedItem[] {
         : [];
 
       // RESPONSES
-      const defaultResponse = responses['200'] ?? responses['201'];
+      const defaultResponse = responses['200'] ?? responses['201'] ?? {};
       const defaultResponseObject =
         '$ref' in defaultResponse
           ? {}
