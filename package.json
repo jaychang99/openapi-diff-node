@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jaychang99/openapi-diff-node#readme",
   "devDependencies": {
     "ts-node": "^10.9.2",
+    "tsup": "^8.1.0",
     "typescript": "^5.5.3"
   }
 }
