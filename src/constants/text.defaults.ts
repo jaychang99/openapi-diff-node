@@ -1,0 +1,1 @@
+export const TEXT_DEFAULT_NOT_AVAILABLE = 'N/A';

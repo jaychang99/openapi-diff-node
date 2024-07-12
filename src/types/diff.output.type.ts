@@ -1,5 +1,8 @@
+import { ApiHttpMethod } from './spec.type';
+
 export interface DiffOutputItem {
   path: string;
+  method: ApiHttpMethod;
   queryParams: QueryParam[];
   requestBody: RequestBody[];
   responseBody: ResponseBody[];
