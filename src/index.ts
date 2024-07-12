@@ -3,6 +3,7 @@ import { DiffOptions } from './types/diff.options.type';
 import { DiffOutputItem } from './types/diff.output.type';
 import { SpecType } from './types/spec.type';
 import fs from 'fs';
+import { resolveReferences } from './utils/resolve.json-ref';
 
 export function add(a: number, b: number): number {
   return a + b;
@@ -17,8 +18,12 @@ export function openapiDiff(
   newSpec: SpecType,
   options?: DiffOptions
 ): DiffOutputItem[] {
-  const flattenedOldSpec = flattenOpenapi(oldSpec);
-  const flattenedNewSpec = flattenOpenapi(newSpec);
+  // TODO: remove type assertion if possible
+  const refResolvedOldSpec = resolveReferences(oldSpec, oldSpec) as SpecType;
+  const refResolvedNewSpec = resolveReferences(newSpec, newSpec) as SpecType;
+
+  const flattenedOldSpec = flattenOpenapi(refResolvedOldSpec);
+  const flattenedNewSpec = flattenOpenapi(refResolvedNewSpec);
   return [];
 }
 
