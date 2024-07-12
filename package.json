@@ -2,8 +2,14 @@
   "name": "openapi-diff-node",
   "version": "1.0.0",
   "description": "An openapi diffing tool for node.js",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
