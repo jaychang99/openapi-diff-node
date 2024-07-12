@@ -27,7 +27,7 @@ export function flattenOpenapi(spec: SpecType): PathFlattenedItem[] {
       const defaultRequestBody = requestBody
         ? '$ref' in requestBody
           ? {}
-          : requestBody?.content?.[DEFAULT_MEDIA_TYPE]
+          : requestBody?.content?.[DEFAULT_MEDIA_TYPE]?.schema
         : undefined;
       const flattenedRequestBody = defaultRequestBody
         ? flattenMediaType(defaultRequestBody)
@@ -38,7 +38,7 @@ export function flattenOpenapi(spec: SpecType): PathFlattenedItem[] {
       const defaultResponseObject =
         '$ref' in defaultResponse
           ? {}
-          : defaultResponse?.content?.[DEFAULT_MEDIA_TYPE];
+          : defaultResponse?.content?.[DEFAULT_MEDIA_TYPE]?.schema;
       const flattenedResponseBody = defaultResponseObject
         ? flattenMediaType(defaultResponseObject)
         : [];

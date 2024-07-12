@@ -1,6 +1,9 @@
-import { TEXT_DEFAULT_NOT_AVAILABLE } from '../constants/text.defaults';
+import {
+  TEXT_DEFAULT_ARRAY_REPRESENTATION,
+  TEXT_DEFAULT_NOT_AVAILABLE,
+} from '../constants/text.defaults';
 import { PathFlattenedItem } from '../types/path.flattened.type';
-import { ApiMediaTypeObject } from '../types/spec.type';
+import { ApiReferenceObject, ApiSchemaObject } from '../types/spec.type';
 
 type FlattenedObjectSchemaReturnType =
   | PathFlattenedItem['flattenedRequestBody']
@@ -8,13 +11,22 @@ type FlattenedObjectSchemaReturnType =
 
 type Property = FlattenedObjectSchemaReturnType[number];
 
+let flattenedMediaType: FlattenedObjectSchemaReturnType = [];
+
 export function flattenMediaType(
-  endpointItem: ApiMediaTypeObject
+  schema: ApiSchemaObject | ApiReferenceObject
 ): FlattenedObjectSchemaReturnType {
-  const flattenedMediaType: FlattenedObjectSchemaReturnType = [];
+  flattenedMediaType = [];
 
-  const { schema } = endpointItem;
+  recursivelyFlattenMediaType(schema, '');
 
+  return flattenedMediaType;
+}
+
+function recursivelyFlattenMediaType(
+  schema: ApiSchemaObject | ApiReferenceObject,
+  propertyPrefix = ''
+) {
   if (!schema) return flattenedMediaType;
   if ('$ref' in schema) return flattenedMediaType; // we first resolve all references, effectively removing this case
 
@@ -24,12 +36,17 @@ export function flattenMediaType(
     const { items } = schema;
 
     if ('$ref' in items) return flattenedMediaType; // we first resolve all references, effectively removing this case
+
+    recursivelyFlattenMediaType(
+      items,
+      `${propertyPrefix}${TEXT_DEFAULT_ARRAY_REPRESENTATION}`
+    );
   } else {
     // NonArraySchemaObject
 
     const { properties } = schema;
-
     if (!properties) return flattenedMediaType;
+
     if ('$ref' in properties) return flattenedMediaType; // we first resolve all references, effectively removing this case
 
     Object.entries(properties).forEach(([propertyName, propertyItem]) => {
@@ -37,16 +54,22 @@ export function flattenMediaType(
 
       const { description, required, type } = propertyItem;
 
+      const isRoot = !propertyPrefix;
+      const addOnBefore = isRoot ? '' : `${propertyPrefix}.`;
+      const name = propertyName
+        ? `${addOnBefore}${propertyName}`
+        : TEXT_DEFAULT_NOT_AVAILABLE;
+
       const property: Property = {
-        name: propertyName ?? TEXT_DEFAULT_NOT_AVAILABLE,
+        name: name,
         description: description ?? TEXT_DEFAULT_NOT_AVAILABLE,
         required: required?.includes(propertyName ?? '') ?? false,
         type: type ?? TEXT_DEFAULT_NOT_AVAILABLE,
       };
 
       flattenedMediaType.push(property);
+
+      recursivelyFlattenMediaType(propertyItem, name);
     });
   }
-
-  return flattenedMediaType;
 }

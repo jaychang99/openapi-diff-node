@@ -1,1 +1,3 @@
 export const TEXT_DEFAULT_NOT_AVAILABLE = 'N/A';
+
+export const TEXT_DEFAULT_ARRAY_REPRESENTATION = '[]';
