@@ -1,3 +1,4 @@
+import { FlattenedCommonEndpointInfo } from './path.flattened.type';
 import { ApiHttpMethod } from './spec.type';
 
 export interface DiffOutputItem {
@@ -15,11 +16,11 @@ interface ResponseBody extends ObjectSchemaBase {}
 
 interface ObjectSchemaBase extends CommonEndpointInfo {}
 
-interface CommonEndpointInfo {
-  name: string;
-  description: string;
-  required: boolean;
+interface CommonEndpointInfo extends FlattenedCommonEndpointInfo, DiffInfo {}
+
+interface DiffInfo {
   status: ApiStatus;
+  modifiedFields: string[];
 }
 
-type ApiStatus = 'REMOVED' | 'MODIFIED' | 'ADDED';
+type ApiStatus = 'REMOVED' | 'MODIFIED' | 'ADDED' | 'UNCHANGED';

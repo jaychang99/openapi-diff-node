@@ -17,7 +17,7 @@ interface FlattenedResponseBody extends FlattenedObjectSchemaBase {}
 
 interface FlattenedObjectSchemaBase extends FlattenedCommonEndpointInfo {}
 
-interface FlattenedCommonEndpointInfo {
+export interface FlattenedCommonEndpointInfo {
   name: string;
   description: string;
   required: boolean;
