@@ -1,6 +1,6 @@
 {
   "name": "openapi-diff-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An openapi diffing tool for node.js",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
