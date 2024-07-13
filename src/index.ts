@@ -44,7 +44,7 @@ if (isDevelopment) {
       method: 'get',
       path: '/sdk/campaigns/{id}',
     };
-
+    // if specific endpoint is needed
     // if (
     //   apiToConsoleLog.method !== item.method ||
     //   apiToConsoleLog.path !== item.path
@@ -68,3 +68,5 @@ if (isDevelopment) {
     console.table(item.responseBody);
   });
 }
+
+export type { DiffOutputItem };
