@@ -73,3 +73,9 @@ npm run dev
 ```
 
 - Hot reload is fully supported. See console for the result of the diff.
+
+## Building for Production
+
+```bash
+npm run build
+```
