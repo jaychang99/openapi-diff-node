@@ -44,8 +44,9 @@ export function diffFlattenedMediaType(
     // if modified
     const modifiedFields = Object.keys(newMediaType).filter(
       (key) =>
-        newMediaType[key as keyof FlattenedMediaType] !==
-        oldMediaType[key as keyof FlattenedMediaType]
+        // reference objects (arrays, (non-array) objects, etc) are always different, so stringify and compare
+        JSON.stringify(newMediaType[key as keyof FlattenedMediaType]) !==
+        JSON.stringify(oldMediaType[key as keyof FlattenedMediaType])
     );
 
     if (modifiedFields.length) {

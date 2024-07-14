@@ -32,8 +32,9 @@ export function diffFlattenedQueryParams(
     // if modified
     const modifiedFields = Object.keys(newParam).filter(
       (key) =>
-        newParam[key as keyof FlattenedQueryParam] !==
-        oldParam[key as keyof FlattenedQueryParam]
+        // reference objects (arrays, (non-array) objects, etc) are always different, so stringify and compare
+        JSON.stringify(newParam[key as keyof FlattenedQueryParam]) !==
+        JSON.stringify(oldParam[key as keyof FlattenedQueryParam])
     );
 
     if (modifiedFields.length) {
