@@ -13,6 +13,9 @@ A tool for diffing two openapi-compatible api schema.
 
 ## Usage
 
+- We assume all request and response bodies are in `application/json` format.
+- Error responses are not supported. For response bodies, a response of status code 200 will be used first, then 201. If no responses are of status code 200 or 201, response object will simply be an empty object.
+
 ---
 
 ```tsx
@@ -58,5 +61,15 @@ export interface FlattenedCommonEndpointInfo {
 }
 ```
 
-- We assume all request and response bodies are in `application/json` format.
-- Error responses are not supported. For response bodies, a response of status code 200 will be used first, then 201. If no responses are of status code 200 or 201, response object will simply be an empty object.
+## Starting Development Server
+
+- make a directory of `src/__local__/examples` and place two files. This directory is git-ignored.
+  - `openapi-old.json` : an old openapi schema file.
+  - `openapi-new.json` : a new openapi schema file.
+
+```bash
+npm install
+npm run dev
+```
+
+- Hot reload is fully supported. See console for the result of the diff.
