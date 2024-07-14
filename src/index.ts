@@ -40,18 +40,6 @@ if (isDevelopment) {
 
   const diff = openapiDiff(oldSpec, newSpec);
   diff.forEach((item) => {
-    const apiToConsoleLog = {
-      method: 'get',
-      path: '/sdk/campaigns/{id}',
-    };
-    // if specific endpoint is needed
-    // if (
-    //   apiToConsoleLog.method !== item.method ||
-    //   apiToConsoleLog.path !== item.path
-    // ) {
-    //   return;
-    // }
-
     console.log('|-----------------------|');
     console.log('|                       |');
     console.log('|         🔅API🔅       |');
