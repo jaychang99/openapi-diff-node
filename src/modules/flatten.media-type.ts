@@ -60,13 +60,18 @@ function recursivelyFlattenMediaType(
         ? `${addOnBefore}${propertyName}`
         : TEXT_DEFAULT_NOT_AVAILABLE;
 
+      const example =
+        typeof propertyItem?.example === 'object'
+          ? JSON.stringify(propertyItem?.example)
+          : propertyItem?.example ?? TEXT_DEFAULT_NOT_AVAILABLE;
+
       const property: Property = {
         name: name,
         description: description ?? TEXT_DEFAULT_NOT_AVAILABLE,
         required: required?.includes(propertyName ?? '') ?? false,
         type: type ?? TEXT_DEFAULT_NOT_AVAILABLE,
         enum: propertyItem.enum ?? [],
-        example: propertyItem.example ?? TEXT_DEFAULT_NOT_AVAILABLE,
+        example,
       };
 
       flattenedMediaType.push(property);
