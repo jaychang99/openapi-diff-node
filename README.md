@@ -79,3 +79,11 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## Checking Types
+
+```bash
+npm run check:types
+```
+
+(tsc will be added as a DevDependency in the future)

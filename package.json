@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "NODE_ENV=development tsup src/index.ts --watch --onSuccess 'node dist/index.js'",
     "build": "tsup",
-    "test": "jest"
+    "test": "jest",
+    "check:types": "npx tsc --noEmit --project tsconfig.json"
   },
   "repository": {
     "type": "git",
