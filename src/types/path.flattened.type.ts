@@ -22,4 +22,5 @@ export interface FlattenedCommonEndpointInfo {
   description: string;
   required: boolean;
   type: string;
+  enum: string[];
 }

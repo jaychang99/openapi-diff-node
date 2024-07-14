@@ -17,6 +17,7 @@ export function flattenQueryParams(
       description: param.description ?? '',
       required: !!param.required,
       type: param.schema?.type ?? TEXT_DEFAULT_NOT_AVAILABLE,
+      enum: param.schema?.enum ?? [],
     });
   });
 
