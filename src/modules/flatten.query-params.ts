@@ -20,7 +20,7 @@ export function flattenQueryParams(
       name: param.name,
       in: param.in as ParameterInType, // TODO: figure out a way to remove type assertion
       description: param.description ?? '',
-      required: !!param.required,
+      required: param.required ?? TEXT_DEFAULT_NOT_AVAILABLE,
       type: param.schema?.type ?? TEXT_DEFAULT_NOT_AVAILABLE,
       enum: param.schema?.enum ?? [],
       example,

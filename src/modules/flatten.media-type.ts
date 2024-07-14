@@ -68,7 +68,9 @@ function recursivelyFlattenMediaType(
       const property: Property = {
         name: name,
         description: description ?? TEXT_DEFAULT_NOT_AVAILABLE,
-        required: required?.includes(propertyName ?? '') ?? false,
+        required: required
+          ? required?.includes(propertyName ?? '')
+          : TEXT_DEFAULT_NOT_AVAILABLE,
         type: type ?? TEXT_DEFAULT_NOT_AVAILABLE,
         enum: propertyItem.enum ?? [],
         example,

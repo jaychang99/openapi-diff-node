@@ -20,7 +20,7 @@ interface FlattenedObjectSchemaBase extends FlattenedCommonEndpointInfo {}
 export interface FlattenedCommonEndpointInfo {
   name: string;
   description: string;
-  required: boolean;
+  required: boolean | string;
   type: string;
   enum: string[];
   example: string;
