@@ -23,4 +23,5 @@ export interface FlattenedCommonEndpointInfo {
   required: boolean;
   type: string;
   enum: string[];
+  example: string;
 }

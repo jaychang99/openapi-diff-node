@@ -66,6 +66,7 @@ function recursivelyFlattenMediaType(
         required: required?.includes(propertyName ?? '') ?? false,
         type: type ?? TEXT_DEFAULT_NOT_AVAILABLE,
         enum: propertyItem.enum ?? [],
+        example: propertyItem.example ?? TEXT_DEFAULT_NOT_AVAILABLE,
       };
 
       flattenedMediaType.push(property);
