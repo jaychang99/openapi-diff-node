@@ -69,4 +69,4 @@ if (isDevelopment) {
   });
 }
 
-export type { DiffOutputItem };
+export type { DiffOutputItem, SpecType as OpenapiSpecType };
