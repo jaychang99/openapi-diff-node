@@ -27,6 +27,7 @@ export function diffFlattenedMediaType(
         ...newMediaType,
         status: 'ADDED',
         modifiedFields: [],
+        changeLogs: [],
       });
 
       return;
@@ -38,6 +39,7 @@ export function diffFlattenedMediaType(
         ...newMediaType,
         status: 'UNCHANGED',
         modifiedFields: [],
+        changeLogs: [],
       });
     }
 
@@ -49,11 +51,20 @@ export function diffFlattenedMediaType(
         JSON.stringify(oldMediaType[key as keyof FlattenedMediaType])
     );
 
+    const changeLogs = modifiedFields.map((field) => {
+      return {
+        field,
+        oldValue: oldMediaType[field as keyof FlattenedMediaType],
+        newValue: newMediaType[field as keyof FlattenedMediaType],
+      };
+    });
+
     if (modifiedFields.length) {
       flattenedMediaType.push({
         ...newMediaType,
         status: 'MODIFIED',
         modifiedFields,
+        changeLogs,
       });
     }
   });
@@ -69,6 +80,7 @@ export function diffFlattenedMediaType(
         ...oldMediaType,
         status: 'REMOVED',
         modifiedFields: [],
+        changeLogs: [],
       });
     }
   });

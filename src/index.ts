@@ -54,6 +54,24 @@ if (isDevelopment) {
     console.table(item.requestBody);
     console.log('--- Response Body ---');
     console.table(item.responseBody);
+
+    item.queryParams.forEach((param) => {
+      if (param.changeLogs.length) {
+        console.table(param.changeLogs);
+      }
+    });
+
+    item.requestBody.forEach((param) => {
+      if (param.changeLogs.length) {
+        console.table(param.changeLogs);
+      }
+    });
+
+    item.responseBody.forEach((param) => {
+      if (param.changeLogs.length) {
+        console.table(param.changeLogs);
+      }
+    });
   });
 }
 

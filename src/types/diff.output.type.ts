@@ -21,6 +21,13 @@ interface CommonEndpointInfo extends FlattenedCommonEndpointInfo, DiffInfo {}
 interface DiffInfo {
   status: ApiStatus;
   modifiedFields: string[];
+  changeLogs: ChangeLog[];
+}
+
+interface ChangeLog {
+  field: string;
+  oldValue: boolean | string | string[];
+  newValue: boolean | string | string[];
 }
 
 type ApiStatus = 'REMOVED' | 'MODIFIED' | 'ADDED' | 'UNCHANGED';

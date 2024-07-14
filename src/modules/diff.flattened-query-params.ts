@@ -21,6 +21,7 @@ export function diffFlattenedQueryParams(
         ...newParam,
         status: 'ADDED',
         modifiedFields: [],
+        changeLogs: [],
       });
 
       return;
@@ -36,12 +37,20 @@ export function diffFlattenedQueryParams(
         JSON.stringify(newParam[key as keyof FlattenedQueryParam]) !==
         JSON.stringify(oldParam[key as keyof FlattenedQueryParam])
     );
+    const changeLogs = modifiedFields.map((field) => {
+      return {
+        field,
+        oldValue: oldParam[field as keyof FlattenedQueryParam],
+        newValue: newParam[field as keyof FlattenedQueryParam],
+      };
+    });
 
     if (modifiedFields.length) {
       flattenedQueryParams.push({
         ...newParam,
         status: 'MODIFIED',
         modifiedFields,
+        changeLogs,
       });
     }
   });

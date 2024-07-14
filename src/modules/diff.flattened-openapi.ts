@@ -32,6 +32,7 @@ export function diffFlattenedOpenapi(
               ...param,
               status: 'ADDED',
               modifiedFields: [],
+              changeLogs: [],
             })
           ),
         ],
@@ -41,6 +42,7 @@ export function diffFlattenedOpenapi(
               ...param,
               status: 'ADDED',
               modifiedFields: [],
+              changeLogs: [],
             })
           ),
         ],
@@ -50,6 +52,7 @@ export function diffFlattenedOpenapi(
               ...param,
               status: 'ADDED',
               modifiedFields: [],
+              changeLogs: [],
             })
           ),
         ],
@@ -95,6 +98,7 @@ export function diffFlattenedOpenapi(
               ...param,
               status: 'REMOVED',
               modifiedFields: [],
+              changeLogs: [],
             })
           ),
         ],
@@ -104,6 +108,7 @@ export function diffFlattenedOpenapi(
               ...param,
               status: 'REMOVED',
               modifiedFields: [],
+              changeLogs: [],
             })
           ),
         ],
@@ -113,6 +118,7 @@ export function diffFlattenedOpenapi(
               ...param,
               status: 'REMOVED',
               modifiedFields: [],
+              changeLogs: [],
             })
           ),
         ],
