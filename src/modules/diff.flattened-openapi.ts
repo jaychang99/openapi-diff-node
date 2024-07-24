@@ -26,6 +26,7 @@ export function diffFlattenedOpenapi(
       diffOutput.push({
         path: newItem.path,
         method: newItem.method,
+        description: newItem.description, // not diffing description for now
         queryParams: [
           ...newItem.flattenedQueryParams.map(
             (param): DiffOutputItem['queryParams'][number] => ({
@@ -68,6 +69,7 @@ export function diffFlattenedOpenapi(
     diffOutput.push({
       path: newItem.path,
       method: newItem.method,
+      description: newItem.description, // not diffing description for now
       queryParams: diffFlattenedQueryParams(
         oldItem.flattenedQueryParams,
         newItem.flattenedQueryParams
@@ -92,6 +94,7 @@ export function diffFlattenedOpenapi(
       diffOutput.push({
         path: oldItem.path,
         method: oldItem.method,
+        description: oldItem.description, // not diffing description
         queryParams: [
           ...oldItem.flattenedQueryParams.map(
             (param): DiffOutputItem['queryParams'][number] => ({

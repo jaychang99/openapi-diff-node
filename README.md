@@ -32,6 +32,7 @@ console.log(diff);
 export interface DiffOutputItem {
   path: string; // path of the endpoint
   method: ApiHttpMethod; // http method of the endpoint
+  description: string; // description of the endpoint (added in v2.0.0)
   queryParams: QueryParam[]; // changes in query string parameters
   requestBody: RequestBody[]; // changes in http request body (application/json)
   responseBody: ResponseBody[]; // changes in http response body (application/json)
