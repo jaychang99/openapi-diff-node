@@ -46,6 +46,7 @@ export function flattenOpenapi(spec: SpecType): PathFlattenedItem[] {
       const pathFlattenedItem: PathFlattenedItem = {
         method,
         path,
+        summary: assertedMethodItem.summary ?? '',
         description: assertedMethodItem.description ?? '',
         flattenedQueryParams,
         flattenedRequestBody,

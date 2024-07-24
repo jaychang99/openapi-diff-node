@@ -3,6 +3,7 @@ import { ApiHttpMethod, ParameterInType } from './spec.type';
 export interface PathFlattenedItem {
   method: ApiHttpMethod;
   path: string;
+  summary: string;
   description: string;
   flattenedQueryParams: FlattenedQueryParam[];
   flattenedRequestBody: FlattenedRequestBody[];
